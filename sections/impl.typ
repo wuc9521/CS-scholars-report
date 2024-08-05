@@ -4,14 +4,37 @@
 
 II.1 Description of the system architecture
 
+=== Frontend
+
+We use `Next.js` and `React` as our frontend framework.
+// TODO
+
+=== Backend
+
+We use `SpringMVC` as our backend framework.
+// TODO
+
+=== Database
+
+We use `PostgreSQL` deployed on a Ubuntu server.
+// TODO
+
 == Dataset
 
 II.2 Description of the dataset
 
+- Snapshot of Academic Family Tree (academictree.org) taken on 2024-02-20
+- locations.csv, people.csv, peopleGrant.csv, authorPub[05-35].csv
+- Unique IDs, represents relations in organized way
+- Each row one relation
+- Many missing values, too many scholars, cleaned up with Python
+
+
+// Originally our dataset comes from
+
 == ER Diagram
 
-II.3 ER diagram (final version from the previous checkpoint copied here)
-
+A detailed explanation of the ER diagram is provided in #ref(<sec:relational-model>).
 #figure(
   image(
     "../figures/er.png",
@@ -20,7 +43,7 @@ II.3 ER diagram (final version from the previous checkpoint copied here)
   caption: "ER Diagram",
 )<fig:er>
 
-== Relational Model
+== Relational Model<sec:relational-model>
 
 II.4 Relational model (final version from the previous checkpoint copied here)
 
