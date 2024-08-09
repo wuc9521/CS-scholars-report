@@ -11,13 +11,11 @@ We chose to focus on CS-scholars for our project due to the increasing importanc
 
 The importance of this application lies in its potential to accelerate scientific progress by fostering connections and providing a clear overview of the computer science research landscape.
 
-== Application.
+== Application
 
-A detailed demo of our application can be accessed from #link(
-  "https://www.youtube.com/watch?v=ILDfNDC0rio"
-)[this link].
+We designed CS-scholars to give users information about various aspects of computer science research. It combines information about research locations, scholars in those locations, their grants, and their publications. Using an intuitive and responsive frontend, it gives easy access to a big amount of data stored in our database.
 
-// TODO: Add a brief description of the application here.
+Users can find top publishing scholars in areas combined with computer science, see how different institutions are impacting the computer science field, or even add data and information of their own.
 
 == Task Assignment
 
@@ -26,9 +24,11 @@ We have two members in our group, and we divided the tasks as follows:
 Arda Gurcan:
 - Data Preprocessing
 - Frontend Development
+- Helping with Backend
 - Database Setup and Data Insertion
 Chentian Wu:
 - Backend Development
 - Database Setup and Data Insertion
+- Evaluation
 
 Our cooperation is very good, and we have been working together to solve the problems we encountered.
