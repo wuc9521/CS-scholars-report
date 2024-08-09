@@ -2,7 +2,11 @@
 
 == System Architecture
 
-II.1 Description of the system architecture
+This sections includes detailed description of the system architecture. Generally speaking, our system architecture follows a three-tier model:
+
+- *Frontend*: A React-based user interface that provides an interactive and responsive experience for users to explore and manage CS scholar data.
+- *Backend*: A Java Spring Boot application that serves as the middle tier, handling business logic, data processing, and API endpoints. It acts as an intermediary between the frontend and the database.
+- *Database*: A PostgreSQL database deployed on an Ubuntu server, which stores and manages all the structured data for our CS scholars application. 
 
 === Frontend
 
@@ -187,6 +191,9 @@ We managed to implement all the frontend and backend functionality specified in 
 A detailed demo of our application prototype can be accessed from #link(
   "https://www.youtube.com/watch?v=ILDfNDC0rio"
 )[this link].
+
+- Frontend source code: https://github.com/ardaGurcan/cs-scholars-frontend
+- Backend source code: https://github.com/wuc9521/cs-scholars-backend
 
 == Evaluation
 
