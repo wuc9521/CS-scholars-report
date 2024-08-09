@@ -9,9 +9,9 @@ II.1 Description of the system architecture
 We use `Next.js` and `React` as our frontend framework.
 
 - Handles user interface and interactions, makes API calls to backend using HTTP
-- Javascript, HTML, CSS, Bootstrap
+- JavaScript, HTML, CSS, Bootstrap
 
-// TODO
+// TODO @ Arda: a slightly more detailed description of the frontend
 
 === Backend
 
@@ -45,7 +45,7 @@ For every non-trivial functional dependency, the left-hand side is a superkey, a
 
 == Dataset // Done
 
-Our dataset is asnapshot of #link("https://academictree.org")[Academic Family Tree] taken on 2024-02-20. The data can be accessed from #link("https://zenodo.org/records/6349537")[this link] and explanations of columns are provided on #link("https://academictree.org/export.php")[the official website].
+Our dataset is a snapshot of #link("https://academictree.org")[Academic Family Tree] taken on 2024-02-20. The data can be accessed from #link("https://zenodo.org/records/6349537")[this link] and explanations of columns are provided on #link("https://academictree.org/export.php")[the official website].
 
 Originally, we downloaded these `csv` files:
 - `locations.csv`,
@@ -104,6 +104,8 @@ A detailed explanation of the ER diagram is provided in #ref(<sec:relational-mod
 == Prototype
 
 II.5 Implementation: description of the prototype
+
+// TODO @ Arda, me: I don't know what we should write here
 
 == Evaluation
 

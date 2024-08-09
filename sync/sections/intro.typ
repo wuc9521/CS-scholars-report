@@ -17,7 +17,7 @@ A detailed demo of our application can be accessed from #link(
   "https://www.youtube.com/watch?v=ILDfNDC0rio"
 )[this link].
 
-// TODO: Add a brief description of the application here.
+// TODO @ Arda: Add a brief description of the application here.
 
 == Task Assignment
 
