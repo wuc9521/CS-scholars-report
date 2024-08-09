@@ -10,11 +10,11 @@ Our frontend is built using `React`. This allows us to display the dynamically c
 
 We've structured the application around four main components, allowing users to easily navigate between them and access their desired information:
 
-- The *Scholars* component displays a searchable and sortable list of academic professionals. Users can filter scholars by location or major, sort them by publication count or h-index, and even isolate those with publications but no grants.
-- The *Locations* component offers similar functionality for research locations. Users can filter locations by major, and sort them by number of scholars with major, total grants, or maximum h-index.
-- When a user selects a specific *Scholar* or *Location*, they can access the respective detailed information from *Profile* or *LocationProfile* components.
-  - The *Profile* component displays in depth data about a scholar such as major, h-index, location, publications, and grants. It also includes forms for adding new publications, grants, and updating existing information.
-  - The *LocationProfile* component displays in depth data about a location such as the country, scholars, total grants, and publications.
+- The *`Scholars`* component displays a searchable and sortable list of academic professionals. Users can filter scholars by location or major, sort them by publication count or h-index, and even isolate those with publications but no grants.
+- The *`Locations`* component offers similar functionality for research locations. Users can filter locations by major, and sort them by number of scholars with major, total grants, or maximum h-index.
+- When a user selects a specific *`Scholar`* or *`Location`*, they can access the respective detailed information from *`Profile`* or *`LocationProfile`* components.
+  - The *`Profile`* component displays in depth data about a scholar such as major, h-index, location, publications, and grants. It also includes forms for adding new publications, grants, and updating existing information.
+  - The *`LocationProfile`* component displays in depth data about a location such as the country, scholars, total grants, and publications.
 
 All of these components use `React` hooks for state management and `axios` for API communication with the backend to ensure efficient data handling and responsive interactions. Additionally, we used `React Bootstrap` to keep the design neat, consistent and responsive across all devices.
 
@@ -22,7 +22,8 @@ All of these components use `React` hooks for state management and `axios` for A
 
 We used `Java` and and the `Spring Boot` framework for our backend. Using `Spring MVC` we built a `REST` API which our frontend uses to interact with the system's data and functions. We planned to handle data storage and management with `JPA` and `Hibernate` which makes it easy to work with our data models. However we've needed to mostly use native `SQL` queries inside `JPA`'s `@Query` annotations.
 
-We've defined repositories, including PeopleRepository, LocationsRepository, PublicationsRepository, and GrantsRepository, to extend JpaRepository to provide basic CRUD operations and sometimes implement more complex queries. For example in PeopleRepository:
+We've defined repositories, including `PeopleRepository`, `LocationsRepository`, `PublicationsRepository`, and `GrantsRepository`, to extend `JpaRepository` to provide basic CRUD operations and sometimes implement more complex queries. For example in `PeopleRepository`:
+
 ```java
 @Query(nativeQuery = true, value = "SELECT p.pid, p.name, p.major, p.hindex, " +
         "l.loc_name AS location, l.locid as location_id, " +
@@ -34,10 +35,11 @@ We've defined repositories, including PeopleRepository, LocationsRepository, Pub
         "WHERE p.pid = :personId")
 Map<String, Object> getPersonProfile(@Param("personId") Long personId);
 ```
+
 This query fetches a detailed profile for a person including their publication and grant counts.
 
-We've implemented four main controllers: PeopleController, LocationsController, PublicationsController, and GrantsController. Here's a comprehensive list of the endpoints provided:
-*PeopleController* endpoints:
+We've implemented four main controllers: `PeopleController`, `LocationsController`, `PublicationsController`, and `GrantsController`. Here's a comprehensive list of the endpoints provided:
+*`PeopleController`* endpoints:
 - GET `/api/scholar/publication-count`: Retrieve scholars sorted by publication count
 - GET `/api/scholar/hindex`: Retrieve scholars sorted by h-index
 - GET `/api/scholar/publications-no-grants`: Get scholars with publications but no grants
@@ -48,7 +50,7 @@ We've implemented four main controllers: PeopleController, LocationsController, 
 - POST `/api/scholar/assign-grant`: Assign a grant to a scholar
 - PUT `/api/scholar/change-location`: Change a scholar's location
 
-*LocationsController* endpoints:
+*`LocationsController`* endpoints:
 - GET `/api/locations`: Get all locations
 - GET `/api/locations/{id}`: Get a specific location by ID
 - GET `/api/locations/person/{personId}`: Get locations for a specific person
@@ -59,7 +61,7 @@ We've implemented four main controllers: PeopleController, LocationsController, 
 - POST `/api/locations`: Add a new location
 - DELETE `/api/locations/{id}`: Delete a location
 
-*PublicationsController* endpoints:
+*`PublicationsController`* endpoints:
 - GET `/api/pub`: Get all publications
 - GET `/api/pub/{id}`: Get a specific publication by ID
 - GET `/api/pub/scholar/{pid}`: Get all publications for a specific scholar
@@ -67,7 +69,7 @@ We've implemented four main controllers: PeopleController, LocationsController, 
 - PUT `/api/pub/{id}`: Update a publication
 - DELETE `/api/pub/{id}`: Delete a publication
 
-*GrantsController* endpoints:
+*`GrantsController`* endpoints:
 - GET `/api/grants`: Get all grants
 - GET `/api/grants/{id}`: Get a specific grant by ID
 - GET `/api/grants/scholar/{pid}`: Get all grants for a specific scholar
@@ -77,9 +79,10 @@ We used a service layer to include any necessary logic between controllers and r
 
 === Database
 
-We use `PostgreSQL` deployed on a Ubuntu server. Our database combined with our Postgres DBMS stores the data and out stored procedures, processes SQL queries.
+We use `PostgreSQL` deployed on a Ubuntu server. Our database combined with our PostgreSQL DBMS stores the data and out stored procedures, processes SQL queries.
 
 We used stored procedures for functionalities that have many parameters and require detailed checks and multiple inserts. For example this is the stored procedure used to insert a new scholar:
+
 ```sql
 CREATE OR REPLACE FUNCTION AddNewPerson(
  p_name VARCHAR(100),
@@ -110,7 +113,6 @@ END;
 $$ LANGUAGE plpgsql;
 ```
 
-
 Implementation: Third Normal Form
 Our database is in 3NF. The functional dependencies are as follows:
 - *`Person`*:
@@ -137,7 +139,7 @@ Originally, we downloaded these `csv` files:
 - `peopleGrant.csv` (13 columns, 6,123,642 rows),
 - `authorPub[05-35].csv` (9 columns, 75,423,143 rows)
 
-These datasets seemed to be exported from a relational database, as each entity has a unique id (pid, locid, grantid, pubid) and relations are represented by attributes with other entities' ids. However there were two main issues:
+These datasets seemed to be exported from a relational database, as each entity has a unique `id` (`pid`, `locid`, `grantid`, `pubid`) and relations are represented by attributes with other entities' ids. However there were two main issues:
 
 Some values weren't in the format we wanted and there were a lot of missing values. We imported these into Python using `pandas` and formatted the columns correctly and decided not to use the columns with too many empty values. We also decided to remove people whose name or major was empty as having these people in our database would not give the user any useful information. Initially we also removed people whose h-index was empty. However this removed too much valuable information that might be useful to our users, so we decided against it.
 

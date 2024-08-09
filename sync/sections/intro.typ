@@ -12,12 +12,9 @@ We chose to focus on CS-scholars for our project due to the increasing importanc
 The importance of this application lies in its potential to accelerate scientific progress by fostering connections and providing a clear overview of the computer science research landscape.
 
 == Application.
+We designed CS-scholars to give users information about various aspects of computer science research. It combines information about research locations, scholars in those locations, their grants, and their publications. Using an intuitive and responsive frontend, it gives easy access to a big amount of data stored in our database.
 
-
-
-
-
-// TODO @ Arda: Add a brief description of the application here.
+Users can find top publishing scholars in areas combined with computer science, see how different institutions are impacting the computer science field, or even add data and information of their own.
 
 == Task Assignment
 
